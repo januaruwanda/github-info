@@ -25,7 +25,7 @@ const Result = (props) => {
         }      
     };
 
-    console.log(commit.commit);
+    console.log(commit.data);
 
     const listRepos = reposInfo.length !== 0 ? reposInfo.data.map((item) => 
         <ListGroup>
@@ -43,45 +43,21 @@ const Result = (props) => {
             </ListGroup.Item>
         </ListGroup>;
 
-    const listCommit = commit.length !== 0 ? commit.commit.map((item) => 
-        <Modal show={show} onHide={handleClose}>
+    const listCommit = commit.length !== 0 ? commit.data.map((item) => 
+    <Modal show={show} onHide={handleClose}>
           <Modal.Header closeButton>
             <Modal.Title>Commits</Modal.Title>
           </Modal.Header>
           <Modal.Body>
             <Container>
-              <div className="col-md-12">
-                <div className="row">
-                  <label className="col-md-12">Author </label>
-                </div>
-                <div className="row">
-                  <input type="text" value={item.author.name} className="form-control col-lg-8" readonly/>
-                </div>
-                <div className="row">
-                  <label className="col-md-12">Date </label>
-                </div>
-                <div className="row">
-                  <input type="text" value={item.author.date} className="form-control col-lg-8" readonly/>
-                </div>
-                <div className="row">
-                  <label className="col-md-12">Comitter </label>
-                </div>
-                <div className="row">
-                  <input type="text" value={item.committer.name} className="form-control col-lg-8" readonly/>
-                </div>
-                <div className="row">
-                  <label className="col-md-12">Date </label>
-                </div>
-                <div className="row">
-                  <input type="text" value={item.comitter.date} className="form-control col-lg-8" readonly/>
-                </div>
-                <div className="row">
-                  <label className="col-md-12">Message </label>
-                </div>
-                <div className="row">
-                  <input type="text" value={item.message} className="form-control col-lg-8" readonly/>
-                </div>
-              </div>
+              <ListGroup>
+                  <ListGroup.Item>
+                  <p style={{ textAlign: "center" }}>
+                      {item.sha}
+                  </p>
+                  </ListGroup.Item>
+              </ListGroup>
+             
               </Container>
               
           </Modal.Body>
@@ -93,14 +69,7 @@ const Result = (props) => {
               Save Changes
             </Button>
           </Modal.Footer>
-        </Modal>) : 
-    <ListGroup>
-        <ListGroup.Item action variant="info">
-        <p style={{ textAlign: "center" }}>
-            Please search the username first
-        </p>
-        </ListGroup.Item>
-    </ListGroup>;
+        </Modal>) : <p>null</p> ;
     
     return (
         <>
@@ -109,7 +78,9 @@ const Result = (props) => {
                 {listRepos}
             </div>
         </Container>
-        {listCommit}
+       {listCommit}
+        
+       
   
         
         
