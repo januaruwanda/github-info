@@ -1,6 +1,6 @@
 import React,  { useState } from 'react';
 import 'bootstrap/dist/css/bootstrap.min.css';
-import { ListGroup, Container, Button, Modal } from 'react-bootstrap';
+import { ListGroup, Container } from 'react-bootstrap';
 import axios from 'axios';
 
 const Result = (props) => {
@@ -23,13 +23,15 @@ const Result = (props) => {
         setShow(true);
 
         try {
-            const result = await axios(`https://api.github.com/repos/januaruwanda/${name}/commits`);
+            const result = await axios(`https://api.github.com/repos/${reposInfo.data[0].owner.login}/${name}/commits`);
 
             setCommit(result);
         }catch(err){
             console.log(err)
         }      
     };
+
+    console.log('Name is :', commit.data)
 
     const listRepos = reposInfo.length !== 0 ? reposInfo.data.map((item) => 
         <ListGroup>
@@ -49,12 +51,6 @@ const Result = (props) => {
     
 
     const listCommit = commit.length !== 0 ? commit.data.map((item) => 
-    // <Modal show={show} onHide={handleClose}>
-    //       <Modal.Header closeButton>
-    //         <Modal.Title>Commits</Modal.Title>
-    //       </Modal.Header>
-    //       <Modal.Body>
-    //         <Container>
               <ListGroup>
                   <ListGroup.Item>
                   <p style={{ textAlign: "center" }}>
@@ -68,19 +64,6 @@ const Result = (props) => {
                   </p>
                   </ListGroup.Item>
               </ListGroup>
-             
-        //       </Container>
-              
-        //   </Modal.Body>
-        //   <Modal.Footer>
-        //     <Button variant="secondary" onClick={handleClose}>
-        //       Close
-        //     </Button>
-        //     <Button variant="primary" onClick={handleClose}>
-        //       Save Changes
-        //     </Button>
-        //   </Modal.Footer>
-        // </Modal>
          ) : 
         <ListGroup>
         <ListGroup.Item>
