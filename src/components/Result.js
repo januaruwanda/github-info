@@ -9,15 +9,6 @@ const Result = (props) => {
     const [commit, setCommit] = useState([]);
     const [show, setShow] = useState(false);
 
-    const handleClose = () => setShow(false);
-    // const handleShow = () => setShow(true);
-
-    // const reposName = reposInfo.data.map((owner) =>
-    // <li>{owner}</li>
-    // );
-
-    // console.log('Name is :', reposName)
-
     const handleClick = async (name) => {
         console.log(name)
         setShow(true);
