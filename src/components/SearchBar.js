@@ -31,7 +31,7 @@ const SearchBar = () => {
                 Search
             </button>
         </div>
-        <Result repos={repos}/>
+        <Result reposInfo={repos}/>
     </>
     );
 }
