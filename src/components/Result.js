@@ -10,8 +10,6 @@ const Result = (props) => {
 
   const handleClick = async (name) => {
     console.log(name);
-    setShow(true);
-
     try {
       const result = await axios(
         `https://api.github.com/repos/${reposInfo.data[0].owner.login}/${name}/commits`
