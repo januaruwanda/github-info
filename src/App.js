@@ -1,6 +1,6 @@
-import SearchBar from './components/SearchBar';
-import 'bootstrap/dist/css/bootstrap.min.css';
-import { Navbar, Nav, Container, NavDropdown } from 'react-bootstrap';
+import SearchBar from "./components/SearchBar";
+import "bootstrap/dist/css/bootstrap.min.css";
+import { Navbar, Nav, Container, NavDropdown } from "react-bootstrap";
 
 function App() {
   return (
@@ -17,7 +17,6 @@ function App() {
         </div>
         <SearchBar />
       </Container>
-      
     </div>
   );
 }
